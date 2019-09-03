@@ -25,10 +25,9 @@ class MyComponent extends Component {
     return (
       <View style={{ flex: 1 }}>
         <ImageBlurLoading
-          thumbnailSource={{ uri: 'https://picsum.photos/id/1/16/16' }}
-          source={{ uri: 'https://picsum.photos/id/1/600/600' }}
+          thumbnailSource={{ uri: 'https://picsum.photos/id/1/50/50' }}
+          source={{ uri: 'https://picsum.photos/id/1/1000/1000' }}
           style={{ flex: 1, width: null, height: null, resizeMode: 'contain' }}
-          resizeMode='cover'
         />
       </View>
   }
@@ -39,7 +38,7 @@ class MyComponent extends Component {
 | Props | Description | Type | Required |
 | --- | --- | --- | --- |
 | [Image props ...](https://facebook.github.io/react-native/docs/image#props) | It accepts all the [Image props](https://facebook.github.io/react-native/docs/image#props) | - | - |
-| `thumbnailSource` | The source of the thumbnail image. Should be a low resolution version of the image used in `imageSource`. | ImageSourcePropType | No |
+| `thumbnailSource` | The source of the thumbnail image. Should be a low resolution version of the image used in `source`. | ImageSourcePropType | No |
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
