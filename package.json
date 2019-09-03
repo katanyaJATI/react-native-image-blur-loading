@@ -1,0 +1,37 @@
+{
+  "name": "react-native-image-blur-loading",
+  "version": "1.0.2",
+  "description": "Progressive Image Loading with React Native",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katanyajati/react-native-image-blur-loading.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-component",
+    "react native",
+    "ios",
+    "android",
+    "ui",
+    "image",
+    "progressive",
+    "loading",
+    "image loading",
+    "progressive image loading",
+    "progressive-image-loading",
+    "loading blur"
+  ],
+  "author": "Janaka Jati Lasmana <janakajati21@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/katanyajati/react-native-image-blur-loading/issues"
+  },
+  "homepage": "https://github.com/katanyajati/react-native-image-blur-loading#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.56.0"
+  }
+}
