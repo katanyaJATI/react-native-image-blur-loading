@@ -1,6 +1,6 @@
 {
   "name": "react-native-image-blur-loading",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Progressive Image Loading with React Native",
   "main": "src/index.js",
   "scripts": {

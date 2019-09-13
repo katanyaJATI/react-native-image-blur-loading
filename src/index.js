@@ -36,6 +36,7 @@ export default class ImageBlurLoading extends Component {
   render() {
     let { imgAnim, thumbnailAnim, isLoading } = this.state
     let {
+      withIndicator,
       thumbnailSource,
       source,
       style,
@@ -57,10 +58,11 @@ export default class ImageBlurLoading extends Component {
           onLoad={ this.onImageLoad }
         />
         { 
-          isLoading && 
-            <View style={[ styles.imageOverlay, styles.centerSection ]}>
-              <ActivityIndicator style={ styles.loadingIndicator } />
-            </View>
+          withIndicator &&
+            isLoading && 
+              <View style={[ styles.imageOverlay, styles.centerSection ]}>
+                <ActivityIndicator style={ styles.loadingIndicator } />
+              </View>
         }
       </View>
     );
@@ -68,5 +70,6 @@ export default class ImageBlurLoading extends Component {
 }
 
 ImageBlurLoading.defaultProps = {
-  onLoad: Function.prototype
+  onLoad: Function.prototype,
+  withIndicator: false,
 }
