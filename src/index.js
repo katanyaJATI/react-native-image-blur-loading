@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   View,
   Animated,
-  ActivityIndicator
+  ActivityIndicator as DefaultActivityIndicator,
 } from 'react-native';
 
 import styles from './style';
@@ -40,6 +40,7 @@ export default class ImageBlurLoading extends Component {
       thumbnailSource,
       source,
       style,
+      ActivityIndicator,
       ...props
     } = this.props
     return (
@@ -72,4 +73,5 @@ export default class ImageBlurLoading extends Component {
 ImageBlurLoading.defaultProps = {
   onLoad: Function.prototype,
   withIndicator: false,
+  ActivityIndicator: DefaultActivityIndicator,
 }
