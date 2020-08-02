@@ -1,8 +1,8 @@
 {
   "name": "react-native-image-blur-loading",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Progressive Image Loading with React Native",
-  "main": "src/index.js",
+  "main": "src/index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -32,6 +32,6 @@
   },
   "homepage": "https://github.com/katanyajati/react-native-image-blur-loading#readme",
   "devDependencies": {
-    "metro-react-native-babel-preset": "^0.56.0"
+    "metro-react-native-babel-preset": "^0.61.0"
   }
 }

@@ -1,3 +1,8 @@
+# OSX
+#
+.DS_Store
+._*
+
 # Logs
 *.log
 npm-debug.log
@@ -8,4 +13,4 @@ build
 dist
 
 # Dependency directory
-node_modules.DS_Store
+node_modules
