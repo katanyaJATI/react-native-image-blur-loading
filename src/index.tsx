@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Animated,
@@ -7,10 +7,10 @@ import {
   AccessibilityProps,
   StyleProp,
   ImageStyle,
-  StyleSheet,
   ImagePropsBase,
   ImagePropsIOS,
-  ImagePropsAndroid
+  ImagePropsAndroid, 
+  StyleSheet
 } from 'react-native';
 
 import styles from './style';
@@ -27,9 +27,15 @@ function ImageBlurLoading(
   { onLoad, withIndicator=true, thumbnailSource, source, style, ...props }: 
   ImageBlurLoadingProps
 ) {
-  const [imgAnim, setImgAnim] = useState<any>(new Animated.Value(0))
-  const [thumbnailAnim, setThumbnailAnim] = useState<any>(new Animated.Value(0))
+  const [imgAnim] = useState<any>(new Animated.Value(0))
+  const [thumbnailAnim] = useState<any>(new Animated.Value(0))
   const [loading, setLoading] = useState<boolean>(true)
+  
+  const [helper, setHelper] = useState<boolean>(false)
+
+  useEffect(() => {
+    thumbnailSource && setHelper(true)
+  }, [])
 
   const handleThumbnailLoad = () => {
     setLoading(false)
@@ -40,6 +46,7 @@ function ImageBlurLoading(
   }
   const onImageLoad = () => {
     setLoading(false)
+    helper && setHelper(false)
     Animated.timing(imgAnim, {
       toValue: 1,
       useNativeDriver: false
@@ -63,34 +70,39 @@ function ImageBlurLoading(
   if (style.borderRadius!=undefined) styleBorder.borderRadius = style.borderRadius
   if (style.borderTopLeftRadius!=undefined) styleBorder.borderTopLeftRadius = style.borderTopLeftRadius
   if (style.borderTopRightRadius!=undefined) styleBorder.borderTopRightRadius = style.borderTopRightRadius
-
-  console.log({styleBorder})
+  
+  const sizeLoading: any = {
+    width: style.width,
+    height: style.height,
+  }
   return (
-    <View style={[ loading && styles.container, styleBorder ]}>
+    <>
       {
-        thumbnailSource &&
+        (thumbnailSource && helper) &&
           <Animated.Image
             { ...props }
             source={thumbnailSource}
-            style={[ style, { opacity: thumbnailAnim } ]}
+            style={[ style, { opacity: thumbnailAnim }, { ...StyleSheet.absoluteFillObject } ]}
             onLoad={ handleThumbnailLoad }
             blurRadius={1}
           />
       }
+
       <Animated.Image
         { ...props }
         source={ source }
         style={[ style, { opacity: imgAnim } ]}
         onLoad={ onImageLoad }
       />
+
       { 
         withIndicator &&
           loading && 
-            <View style={[ styles.imageOverlay, styles.centerSection ]}>
+            <View style={[ styles.imageOverlay, styles.centerSection, styleBorder, sizeLoading ]}>
               <ActivityIndicator />
             </View>
       }
-    </View>
+    </>
   )
 }
 
