@@ -31,6 +31,7 @@ class MyComponent extends Component {
           style={{ flex: 1, width: null, height: null, resizeMode: 'contain' }}
         />
       </View>
+    )
   }
 }
 ```
