@@ -24,7 +24,7 @@ export interface ImageBlurLoadingProps extends ImagePropsBase, ImagePropsIOS, Im
 }
 
 function ImageBlurLoading(
-  { onLoad, withIndicator=true, thumbnailSource, source, style, ...props }: 
+  { onLoad, withIndicator=true, thumbnailSource, source, style={}, ...props }: 
   ImageBlurLoadingProps
 ) {
   const [imgAnim] = useState<any>(new Animated.Value(0))
@@ -35,6 +35,12 @@ function ImageBlurLoading(
 
   useEffect(() => {
     thumbnailSource && setHelper(true)
+    const timer = setTimeout(() => setLoading(false), 20000) // fetch image timeout 20s
+    return () => {
+      if (timer){
+        clearTimeout(timer)
+      }
+    }
   }, [])
 
   const handleThumbnailLoad = () => {
@@ -62,18 +68,34 @@ function ImageBlurLoading(
     borderRadius?: number;
     borderTopLeftRadius?: number;
     borderTopRightRadius?: number;
-  } = {}
-  if (style.borderBottomLeftRadius!=undefined) styleBorder.borderBottomLeftRadius = style.borderBottomLeftRadius
-  if (style.borderBottomRightRadius!=undefined) styleBorder.borderBottomRightRadius = style.borderBottomRightRadius
-  if (style.borderColor!=undefined) styleBorder.borderColor = style.borderColor
-  if (style.borderWidth!=undefined) styleBorder.borderWidth = style.borderWidth
-  if (style.borderRadius!=undefined) styleBorder.borderRadius = style.borderRadius
-  if (style.borderTopLeftRadius!=undefined) styleBorder.borderTopLeftRadius = style.borderTopLeftRadius
-  if (style.borderTopRightRadius!=undefined) styleBorder.borderTopRightRadius = style.borderTopRightRadius
-  
+  } = {
+    borderBottomLeftRadius: style?.borderBottomLeftRadius || 0,
+    borderBottomRightRadius: style?.borderBottomRightRadius || 0,
+    borderColor: style?.borderColor || 0,
+    borderWidth: style?.borderWidth || 0,
+    borderRadius: style?.borderRadius || 0,
+    borderTopLeftRadius: style?.borderTopLeftRadius || 0,
+    borderTopRightRadius: style?.borderTopRightRadius || 0,
+  }
   const sizeLoading: any = {
-    width: style.width,
-    height: style.height,
+    width: style?.width || 0,
+    height: style?.height || 0,
+  }
+
+  if (style.length) { // 
+    for (let i=0; i<style.length; i++) {
+      // find width & height for loading frame indicators
+      if (style[i].width!=undefined) sizeLoading.width = style[i].width
+      if (style[i].height!=undefined) sizeLoading.height = style[i].height
+      // find border radius for loading frame indicators
+      if (style[i].borderBottomLeftRadius!=undefined) styleBorder.borderBottomLeftRadius = style[i].borderBottomLeftRadius
+      if (style[i].borderBottomRightRadius!=undefined) styleBorder.borderBottomRightRadius = style[i].borderBottomRightRadius
+      if (style[i].borderColor!=undefined) styleBorder.borderColor = style[i].borderColor
+      if (style[i].borderWidth!=undefined) styleBorder.borderWidth = style[i].borderWidth
+      if (style[i].borderRadius!=undefined) styleBorder.borderRadius = style[i].borderRadius
+      if (style[i].borderTopLeftRadius!=undefined) styleBorder.borderTopLeftRadius = style[i].borderTopLeftRadius
+      if (style[i].borderTopRightRadius!=undefined) styleBorder.borderTopRightRadius = style[i].borderTopRightRadius
+    }
   }
   return (
     <>

@@ -20,18 +20,17 @@ import { View } from 'react-native';
 import ImageBlurLoading from 'react-native-image-blur-loading'
 
 // ...
-class MyComponent extends Component {
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <ImageBlurLoading
-          withIndicator
-          thumbnailSource={{ uri: 'https://picsum.photos/id/1/50/50' }}
-          source={{ uri: 'https://picsum.photos/id/1/1000/1000' }}
-          style={{ flex: 1, width: null, height: null, resizeMode: 'contain' }}
-        />
-      </View>
-  }
+const MyComponent = () => {
+  return (
+    <View style={{ flex: 1 }}>
+      <ImageBlurLoading
+        withIndicator
+        thumbnailSource={{ uri: 'https://picsum.photos/id/1/50/50' }}
+        source={{ uri: 'https://picsum.photos/id/1/1000/1000' }}
+        style={{ flex: 1, width: undefined, height: undefined, resizeMode: 'contain' }}
+      />
+    </View>
+  )
 }
 ```
 
@@ -40,7 +39,7 @@ class MyComponent extends Component {
 | --- | --- | --- | --- |
 | [Image props ...](https://facebook.github.io/react-native/docs/image#props) | It accepts all the [Image props](https://facebook.github.io/react-native/docs/image#props) | - | - |
 | `thumbnailSource` | The source of the thumbnail image. Should be a low resolution version of the image used in `source`. | ImageSourcePropType | No |
-| `withIndicator` | Displaying `ActivityIndicator` component while the image is still loading. | bool | No |
+| `withIndicator` | Displaying `ActivityIndicator` component while the image is still loading. | boolean | No |
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
