@@ -69,17 +69,17 @@ function ImageBlurLoading(
     borderTopLeftRadius?: number;
     borderTopRightRadius?: number;
   } = {
-    borderBottomLeftRadius: style?.borderBottomLeftRadius || 0,
-    borderBottomRightRadius: style?.borderBottomRightRadius || 0,
-    borderColor: style?.borderColor || 0,
-    borderWidth: style?.borderWidth || 0,
-    borderRadius: style?.borderRadius || 0,
-    borderTopLeftRadius: style?.borderTopLeftRadius || 0,
-    borderTopRightRadius: style?.borderTopRightRadius || 0,
+    borderBottomLeftRadius: style?.borderBottomLeftRadius || undefined,
+    borderBottomRightRadius: style?.borderBottomRightRadius || undefined,
+    borderColor: style?.borderColor || undefined,
+    borderWidth: style?.borderWidth || undefined,
+    borderRadius: style?.borderRadius || undefined,
+    borderTopLeftRadius: style?.borderTopLeftRadius || undefined,
+    borderTopRightRadius: style?.borderTopRightRadius || undefined,
   }
   const sizeLoading: any = {
-    width: style?.width || 0,
-    height: style?.height || 0,
+    width: style?.width || undefined,
+    height: style?.height || undefined,
   }
 
   if (style.length) { // 
