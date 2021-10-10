@@ -24,7 +24,6 @@ const MyComponent = () => {
   return (
     <View style={{ flex: 1 }}>
       <ImageBlurLoading
-        withIndicator
         thumbnailSource={{ uri: 'https://picsum.photos/id/1/50/50' }}
         source={{ uri: 'https://picsum.photos/id/1/1000/1000' }}
         style={{ flex: 1, width: undefined, height: undefined, resizeMode: 'contain' }}
