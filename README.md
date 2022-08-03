@@ -8,8 +8,13 @@ React Native component for progressive image loading.
 
 Run in your root project directory
 
+using NPM
 ```bash
-$ npm install react-native-image-blur-loading --save
+$ npm install react-native-image-blur-loading
+```
+or using yarn
+```bash
+$ yarn add react-native-image-blur-loading
 ```
 
 ## Usage
@@ -26,7 +31,7 @@ const MyComponent = () => {
       <ImageBlurLoading
         thumbnailSource={{ uri: 'https://picsum.photos/id/1/50/50' }}
         source={{ uri: 'https://picsum.photos/id/1/1000/1000' }}
-        style={{ flex: 1, width: undefined, height: undefined, resizeMode: 'contain' }}
+        style={{ flex: 1, width: 'auto', height: 'auto', resizeMode: 'contain' }}
       />
     </View>
   )
