@@ -13,7 +13,7 @@ import {
   StyleSheet,
   ImageURISource,
 } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import FastImage, { ResizeMode } from 'react-native-fast-image';
 
 import styles from './style';
 
@@ -30,6 +30,7 @@ export interface ImageBlurLoadingProps
   source: ImageSourcePropType;
   style?: StyleProp<ImageStyle> & any;
   fastImage?: boolean;
+  resizeMode?: ResizeMode;
 }
 
 function ImageBlurLoading({
@@ -39,6 +40,7 @@ function ImageBlurLoading({
   source,
   style = {},
   fastImage,
+  resizeMode,
   ...props
 }: ImageBlurLoadingProps) {
   const [imgAnim] = useState<any>(new Animated.Value(0));
@@ -156,6 +158,7 @@ function ImageBlurLoading({
           }}
           style={[style, { opacity: imgAnim }]}
           onLoad={onImageLoad}
+          resizeMode={resizeMode}
         />
       )}
 
